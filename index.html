@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>바보상자 : 홈</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="shortcut icon" href="https://ifh.cc/g/tVs9Jo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=IBM+Plex+Sans+KR&family=Jua&family=Nanum+Gothic+Coding&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--<script src="script.js" defer></script>-->
+  </head>
+  <body>
+    <noscript>
+      <h2>이런! JS 실행이 불가능한 환경입니다.</h2>
+      <h4>Hmm.. JS can't work here!</h4>
+    </noscript>
+    <div id="loader"></div>
+    <header>
+      <div id="logo" onclick="pageMove('/',1000)">
+        <img src="https://ifh.cc/g/tVs9Jo.png" />
+      </div>
+      <div class="standHr"></div>
+      <!--PC 와 타블렛 환경 네비게이션바-->
+      <nav>
+        <div onclick="pageMove('/',1000);">메뉴</div>
+        <div onclick="pageMove('/',1000);">메뉴</div>
+        <div onclick="pageMove('/',1000);">메뉴</div>
+        <div onclick="pageMove('/',1000);">메뉴</div>
+      </nav>
+      <div class="standHr"></div>
+      <!--PC 와 타블렛 환경 로그인 메뉴-->
+      <div id="more">
+        <div id="logined">
+          <div id="profile"><img src="https://ifh.cc/g/y4oa3w.png" /></div>
+          <div id="nickname">최대글자수기준</div>
+          <button
+            class="midB"
+            style="width: 50px; padding: 8px; margin-top: 10px"
+            id="logout"
+            onclick="$aphpiy()"
+          >
+            ⨉
+          </button>
+        </div>
+        <div id="not-logined">
+          <button class="highB" style="width: 100px">로그인</button>
+          <button class="midB" style="width: 100px">회원가입</button>
+        </div>
+        <div
+          id="mobileNav"
+          onclick="
+          HTML('#mobileNavCover').style.visibility = 'visible';
+          HTML('#mobileNavCover').style.opacity = '1';
+          HTML('#mobileNavWindow').style.height = '450px'"
+        >
+          <img src="https://ifh.cc/g/3a2WwO.png" />
+        </div>
+      </div>
+    </header>
+    <!--모바일 네비게이션바 환경 + 로그인 메뉴-->
+    <div
+      id="mobileNavCover"
+      onclick="
+    HTML('#mobileNavWindow').style.height = '0px'
+    HTML('#mobileNavCover').style.opacity = '0'
+    HTML('#mobileNavCover').style.visibility = 'hidden';"
+    >
+      <div id="mobileNavWindow">
+        <div id="mobileMore-R">
+          <div id="mob-logined">
+            <div id="profile"><img src="https://ifh.cc/g/y4oa3w.png" /></div>
+            <div id="nickname">최대글자수기준</div>
+            <button
+              class="midB"
+              style="width: 130px; padding: 8px; margin-top: 10px"
+              onclick="$aphpiy()"
+            >
+              ⨉
+            </button>
+          </div>
+          <div id="mob-not-logined">
+            <button class="highB" style="width: 100px">로그인</button>
+            <button class="midB" style="width: 100px">회원가입</button>
+          </div>
+        </div>
+        <div style="width: 150px; height: 15px"></div>
+        <div class="standHr" style="height: 15px"></div>
+        <div style="width: 150px; height: 15px"></div>
+        <div id="mobileNav-R">
+          <div onclick="pageMove('/',1000);">메뉴</div>
+          <div onclick="pageMove('/',1000);">메뉴</div>
+          <div onclick="pageMove('/',1000);">메뉴</div>
+          <div onclick="pageMove('/',1000);">메뉴</div>
+        </div>
+      </div>
+    </div>
+    <main>
+      <div id="contentListCover">
+        <div class="contentCover" style="margin-bottom: 20px" id="write">
+          <div class="contentUser">
+            <img
+              class="contentUserProf"
+              src="https://ifh.cc/g/y4oa3w.png"
+              onerror="//this"
+            />
+            <div class="contentUserInfo">
+              <div class="contentUserNick">#예시닉네임</div>
+              <div class="contentUserTime">2***.**.**</div>
+            </div>
+          </div>
+          <textarea placeholder="당신의 생각을 공유해보세요!"></textarea>
+          <button id="writeSend" class="highB">올리기</button>
+        </div>
+
+        <template class="contentCover">
+          <div class="contentUser">
+            <img
+              class="contentUserProf"
+              src="https://ifh.cc/g/y4oa3w.png"
+              onerror="//this"
+            />
+            <div class="contentUserInfo">
+              <div class="contentUserNick">#예시닉네임</div>
+              <div class="contentUserTime">2***.**.**</div>
+            </div>
+          </div>
+          <div class="contentContent">
+            <span class="mention">@예시닉네임</span> 예시내용입니다. 이곳에 글이
+            작성될 수 있습니다.
+          </div>
+          <div class="contentTail">
+            <div class="contentLike L0">❤1</div>
+            <div class="contentComButton">댓글0</div>
+          </div>
+        </template>
+      </div>
+    </main>
+
+    <script src="$iodryyomh.js" defer></script>
+    <script src="$Vpldud.js" defer></script>
+    <script src="$aphomdud.js" defer></script>
+    <script src="$aomlQstsz.js" defer></script>
+    <script src="Login$IoDry.js" defer></script>
+    <script src="$dypt2.js" defer></script>
+    <script src="$vpmdpar.js" defer></script>
+  </body>
+</html>
