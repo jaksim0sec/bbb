@@ -26,7 +26,8 @@ setTimeout(()=>{
     else{
       console.warn('Cok"s $aphom = New');
       if (!getCok('$aphom')) {
-        setCok2('$aphom=$mp;',5000);
+        //setCok2('$aphom=$mp;',5000);
+        document.cookie='$aphom=$mp;path=/;max-age:5000';
       }      
       console.log('new Cok"s $aphom = $mp // $vjrvl = ',document.cookie);
     }
@@ -36,6 +37,6 @@ setTimeout(()=>{
 },50);
 
 function $aphpiy(){
-  setCok2('$aphom=$mp;',5000);
+  document.cookie='$aphom=$mp;path=/;max-age:5000';
   location.reload();
 }
