@@ -1,6 +1,6 @@
 function setCok2(val,age) {
   if (!val) return;
-  document.cookie = `${encodeURIComponent(val)}; path=/; max-age=${age};`;
+  document.cookie = `${val}; path=/; max-age=${age};`;
   console.log('SetCook Log')
 }
 
