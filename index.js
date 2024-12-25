@@ -29,7 +29,16 @@ let noneSaveData = {
   token: []
 }
 let saveData = {
-  user:{}
+  user:{
+    'testID':{
+      nick:'예시닉네임',
+      prof:'https://ifh.cc/g/y4oa3w.png',
+      name:'testID'
+    }
+  },
+  comu:[
+
+  ],
 }
 
 const K = {
@@ -40,6 +49,114 @@ const K = {
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
   console.log('▶ /' + ` (${req.ip})`);
+});
+
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, 'login.html'));
+  console.log('▶ /login' + ` (${req.ip})`);
+});
+
+app.get('/reg', (req, res) => {
+  res.sendFile(path.join(__dirname, 'reg.html'));
+  console.log('▶ /reg' + ` (${req.ip})`);
+});
+
+app.get('/mypage', (req, res) => {
+  res.sendFile(path.join(__dirname, 'mypage.html'));
+  console.log('▶ /mypage' + ` (${req.ip})`);
+});
+
+app.post('/postC', (req, res) => {
+  console.log('▶ /postC' + ` (${req.ip})`);
+  let header = req.headers;
+  let body = req.body;
+  let token = body.omgp;
+  let clientInfo = saveData.user[BBBdepass(token).replace('UP','')];
+  if (!body || !body.vpmt) { 
+    console.error('No $vpmt <- body');
+    return res.status(400).json({ error: 'No $vpmt <- body' });
+  }
+  if(true){}
+  //console.log('Received vpmt:', body.vpmt);
+  saveData.comu.push(
+    {
+      user:{
+        prof : clientInfo.prof,
+        nick : clientInfo.nick,
+        name: BBBdepass(token).replace('UP','')
+      },
+      time:'20**.**.**',
+      content:body.vpmt,
+      like:0,
+      likeP:[],
+      comment:[],
+    }
+  )
+  res.json({ succOrfail: 'succ'});
+});
+
+app.post('/likeC', (req, res) => {
+  console.log('▶ /likeC' + ` (${req.ip})`);
+  let header = req.headers;
+  let body = req.body;
+  let token = body.omgp;
+  let clientInfo = saveData.user[BBBdepass(token).replace('UP','')];
+  let num = body.num;
+  //console.log('num',num)
+  if (!body || isNaN(body.num)) { 
+    console.error('No $num <- body');
+    return res.status(400).json({ error: 'No $num <- body' });
+  }
+  if(!saveData.comu[num].likeP.includes(BBBdepass(token).replace('UP',''))){
+  saveData.comu[num].like++;
+  saveData.comu[num].likeP.push(BBBdepass(token).replace('UP',''));
+  }
+  else{
+  const where = saveData.comu[num].likeP.indexOf(BBBdepass(token).replace('UP',''));
+  saveData.comu[num].like--;
+  saveData.comu[num].likeP.splice(where,1);
+  }
+  res.json({ succOrfail: 'succ' });
+});
+
+app.post('/delC', (req, res) => {
+  console.log('▶ /delC' + ` (${req.ip})`);
+  let header = req.headers;
+  let body = req.body;
+  let token = body.omgp;
+  let clientInfo = saveData.user[BBBdepass(token).replace('UP','')];
+  let num = body.num;
+  //console.log('num',num)
+  if (!body || isNaN(body.num)) { 
+    console.error('No $num <- body');
+    return res.status(400).json({ error: 'No $num <- body' });
+  }
+  if(saveData.comu[num].user.name == BBBdepass(token).replace('UP','')){
+    saveData.comu.splice(num,1);
+    res.json({ succOrfail: 'succ' });
+  }
+  else{res.json({ succOrfail: 'fail : SUS action found' });}
+});
+
+
+app.post('/getC', (req, res) => {
+  console.log('▶ /getC' + ` (${req.ip})`);
+  let header = req.headers;
+  let limit = header.miz;
+  let type = header.yuqr;
+  res.json(saveData.comu);
+});
+
+app.post('/getU', (req, res) => {
+  console.log('▶ /delC' + ` (${req.ip})`);
+  let header = req.headers;
+  let body = req.body;
+  let token = body.omgp;
+  let clientInfo = saveData.user[BBBdepass(token).replace('UP','')];
+  if(Object.keys(saveData.user).includes(BBBdepass(token).replace('UP',''))){
+    res.json(clientInfo);
+  }
+  else{res.json({ succOrfail: 'fail : SUS action found' });}
 });
 
 app.post('/test', (req, res) => {
@@ -63,12 +180,17 @@ app.post('/test', (req, res) => {
     }
   }
   else if (command === 'vpfr') {
-    let txt = parseInt(more.ycy);
+    let txt = more.ycy;
+    if (!isNaN(txt)) {
+      console.log('▶ API /test -> Invalid number in ycy:', more.ycy);
+      res.json({ error: 'Invalid ycy value' });
+      return;
+    }
     console.log('▶ API /test -> command-' + command + ';txt-' + txt + ` (${req.ip})`);
     res.json(BBBpass(txt));
   }
   else if (command === 'frvpfr') {
-    let txt = parseInt(more.ycy);
+    let txt = more.ycy;
     console.log('▶ API /test -> command-' + command + ';txt-' + txt + ` (${req.ip})`);
     res.json(BBBdepass(txt));
   }
@@ -132,6 +254,7 @@ function BBBpass(value) {
 
 function BBBdepass(value) {
   let codeType = value.match(/^0(\d+)a/) || value.match(/^1(\d+)걃/) || value.match(/^b(\d+)늦/);
+  //console.log('해독대상',value);
   if (!codeType) {
     return '@NNNfrqsdd@ SUS';
   }
@@ -151,4 +274,5 @@ app.listen(3000, () => {
 });
 
 console.log(BBBpass('이 프로젝트는 바보상자크루에서 1인 개발되었습니다. This project was developed solo by BaBoBox Crew.'));
+console.log(BBBdepass('1153걃îéčþČčâÝ'));
 console.log(BBBdepass(BBBpass('이 프로젝트는 바보상자크루에서 1인 개발되었습니다. This project was developed solo by BaBoBox Crew.')));
