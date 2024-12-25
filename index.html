@@ -102,7 +102,7 @@
     </div>
     <main>
       <div id="contentListCover">
-        <div class="contentCover" style="margin-bottom: 20px" id="write">
+        <div class="contentCoverWrite" style="margin-bottom: 20px" id="write">
           <div class="contentUser">
             <img
               class="contentUserProf"
@@ -114,8 +114,8 @@
               <div class="contentUserTime">2***.**.**</div>
             </div>
           </div>
-          <textarea placeholder="당신의 생각을 공유해보세요!"></textarea>
-          <button id="writeSend" class="highB">올리기</button>
+          <textarea placeholder="당신의 생각을 공유해보세요!" id='writerText'></textarea>
+          <button id="writeSend" class="highB" onclick="postC(HTML('#writerText').value)">올리기</button>
         </div>
 
         <template class="contentCover">
@@ -149,5 +149,7 @@
     <script src="Login$IoDry.js" defer></script>
     <script src="$dypt2.js" defer></script>
     <script src="$vpmdpar.js" defer></script>
+
+    <script src="$index$hryV.js" defer></script>
   </body>
 </html>
