@@ -306,7 +306,20 @@ main{
   padding: 3%;
 }
 
+.contentCoverWrite{
+  width: 90%;
+  box-shadow: 0px 4px 10px #00000030;
+  border-radius: 20px;
+  margin: 10px;
+  padding: 3%;
+}
+
 .contentCover:hover{
+  box-shadow: 0px 10px 10px #00000030;
+  transform: translateY(-6px);
+}
+
+.contentCoverWrite:hover{
   box-shadow: 0px 10px 10px #00000030;
   transform: translateY(-6px);
 }
@@ -366,6 +379,28 @@ main{
   align-items: center;
   justify-content: center;
   margin-right: 5px;
+}
+
+.contentDel{
+  padding: 0 8px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+}
+
+.contentDel:hover{
+  padding: 0 8px;
+  border-radius: 40px;
+  height: 28px;
+  background-color: #EAEAEA;
+  color: #525151;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+  transform: translateY(-5px);
 }
 
 .L0{
